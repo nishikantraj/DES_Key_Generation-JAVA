@@ -33,6 +33,8 @@ public class circular_rotation {
 		System.out.println("-----------------------");
 		int[][]pc_table2=pc2_table.getPc2(pc2_table.pc2_initial(c0,c1));
 		display(pc_table2);
+		System.out.println("-----------------------\n");
+		System.out.println("Final Key after 3 rounds of different processes: "+getSecretKey(pc_table2));
 	}
 	
 	public static void display(int[][]nums) {
@@ -40,5 +42,16 @@ public class circular_rotation {
 			System.out.println(Arrays.toString(nums[i]));
 		}
 	}
-
+	public static String getSecretKey(int[][]arr) {
+		StringBuilder st=new StringBuilder();
+		for(int[]temp:arr) {
+			StringBuilder tempSt=new StringBuilder();			
+			for(int a:temp) {
+				tempSt.append(a);
+			}
+			int decimal=Integer.parseInt(tempSt.toString(),2);
+			st.append((char)decimal);
+		}
+		return st.toString();
+	}
 }
